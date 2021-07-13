@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="cn.mapper.IEmp_WelfareMapper">
+ <!-- 增加员工与福利关系数据 -->
+ <insert id="saveEmp_Welf" parameterType="Employee_Welfare">
+ insert into Employee_Welfare(eid,wid) values(#{eid},#{wid})
+ </insert>
+ <!-- 删除员工福利数据 -->
+ <delete id="deleteEmp_Welf" parameterType="java.lang.Integer">
+ delete from Employee_Welfare where eid=#{eid}
+ </delete>
+ <!-- 查询个人员工福利 -->
+ <select id="searchByIdEmp_Welf" parameterType="java.lang.Integer" resultType="Welfare">
+ select w.* from Employee_Welfare ew,welfare w where ew.wid=w.wid and ew.eid=#{eid}
+ </select>
+ </mapper>

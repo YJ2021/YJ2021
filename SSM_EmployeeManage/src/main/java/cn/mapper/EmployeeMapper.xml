@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="cn.mapper.IEmployeeMapper">
+   <!-- 员工信息添加 -->
+   <insert id="saveEmp" parameterType="Employee">
+    insert into Employee(ename,sex,address,birthday,photo,deptId) values(#{ename},#{sex},#{address},#{birthday},#{photo},#{deptId})
+   </insert>
+   <!-- 员工信息删除 -->
+   <delete id="deleteEmp" parameterType="java.lang.Integer">
+   delete from employee where eid=#{eid}
+   </delete>
+   <!-- 员工信息修改 -->
+   <update id="updateEmp" parameterType="Employee">
+   update employee set ename=#{ename},sex=#{sex},address=#{address},birthday=#{birthday},photo=#{photo},deptid=#{deptId} where eid=#{eid}
+   </update>
+   <!-- 员工信息单个查询 -->
+   <select id="searchEmpById" parameterType="java.lang.Integer" resultType="Employee">
+   select em.*,d.deptname from employee em,department d where em.deptid=d.deptid and eid=#{eid}
+   </select>
+   <!-- 员工信息统计（分页） -->
+   <select id="searchEmpPageAll" parameterType="PageBean" resultType="Employee">
+   select em.*,d.deptname from employee em,department d where em.deptid=d.deptid order by eid limit ${(page-1)*rows},${rows}
+   </select>
+   <!--总记录数  -->
+   <select id="maxRows" resultType="java.lang.Integer">
+   select count(1) from employee
+   </select>
+   <!--员工编号查询  -->
+   <select id="searchEid" resultType="java.lang.Integer">
+   select max(eid) from employee
+   </select>
+ </mapper>

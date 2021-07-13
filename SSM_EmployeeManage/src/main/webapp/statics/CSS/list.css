@@ -1,0 +1,33 @@
+@charset "UTF-8";
+body{
+    width:1200px;
+    height:auto;
+    margin: auto;
+    padding: 0px;
+}
+a{ text-decoration: none;}
+#stuListTable{
+	width:1200px ;
+	height:auto;
+	margin:auto;
+	padding: 0px;
+	text-align:center;
+	font-family: "微软雅黑";
+}
+.tab2{
+	width:1200px ;
+	height:auto ;
+	margin:auto;
+	padding: 0px;
+	text-align:center;
+	font-family: "微软雅黑";
+}
+.tab2_1{text-align: center; }
+ .stitle,.back,.fo{background : #A2B5CD;}
+ .title{background : #A2B5CD;font-size: 1.5em;}
+ .change{width: 150px}
+.over{
+	color: red;
+	font-size: 0.8em;
+}
+#maxPage{text-align: right;}
