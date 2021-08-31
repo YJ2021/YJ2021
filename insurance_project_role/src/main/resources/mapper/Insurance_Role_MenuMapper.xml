@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.insurance.mapper.Insurance_Role_MenuMapper">
+
+    <!--根据角色ID(多个) 查询菜单ID(多个)-->
+    <select id="searchMenuId" parameterType="Integer" resultType="Integer">
+        select menuId from insurance_role_menu where roleid in
+        <foreach collection="list" item="roleId" open="(" separator="," close=")">
+            #{roleId}
+        </foreach>
+    </select>
+
+</mapper>

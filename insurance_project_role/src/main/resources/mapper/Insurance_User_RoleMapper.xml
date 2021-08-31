@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.insurance.mapper.Insurance_User_RoleMapper">
+    <!--查询角色（多个）-->
+    <select id="searchRoleId" parameterType="Integer" resultType="Integer">
+        select roleid from insurance_user_role where userid=#{userId}
+    </select>
+
+</mapper>

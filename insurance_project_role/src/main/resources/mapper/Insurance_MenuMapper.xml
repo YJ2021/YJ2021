@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.insurance.mapper.Insurance_MenuMapper">
+
+    <!--根据菜单Id查询菜单列表-->
+    <select id="searchMenuContent" parameterType="Integer" resultType="Insurance_Menu">
+        select *from insurance_menu where id in
+        <foreach collection="list" item="menuId" open="(" separator="," close=")">
+            #{menuId}
+        </foreach>
+    </select>
+
+</mapper>

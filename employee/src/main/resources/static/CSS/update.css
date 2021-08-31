@@ -1,0 +1,25 @@
+@charset "UTF-8";
+ .father{
+		 margin: auto;
+		 width: 600px;
+		 height: 400px;
+		 font-family: "楷体";
+		 font-size: 1.2em;
+}
+ a{text-decoration: none;}
+  table{
+		 background:url("img/background1.jpg") no-repeat;
+		 background-size: cover;
+		 text-align: left;
+		 width:600px; 
+		 height:400px;
+}
+ .buttom,.title{
+		 background-color:#A2B5CD; 
+		 text-align: center;
+		 height: 45px;
+ }
+  tr>td:first-child{
+         text-align:center;
+         width: 100px;
+ }

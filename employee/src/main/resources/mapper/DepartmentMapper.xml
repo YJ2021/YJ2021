@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="cn.mapper.IDepartmentMapper">
+ <!-- 查询部门列表 -->
+ <select id="findDeptAll" resultType="Department">
+ select *from Department
+ </select>
+ <!-- 个人部门查询 -->
+ <select id="searchDeptName" parameterType="java.lang.Integer" resultType="Department">
+ select d.deptname from Employee em inner join department d on em.deptid=d.deptid where eid=#{eid}
+ </select>
+ </mapper>

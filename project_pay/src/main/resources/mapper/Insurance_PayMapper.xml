@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.insurance.mapper.Insurance_PayMapper">
+
+    <!--根据订单号查询订单信息-->
+    <select id="searchProDetails" parameterType="String" resultType="Insurance_Pay">
+        select *from insurance_products_order where orderNo=#{orderNo}
+    </select>
+
+    <!--修改支付完毕订单状态-->
+    <update id="update_ProPayStatus" parameterType="java.util.Map">
+        update insurance.insurance_products_order set statusType=#{statusType} where orderNo=#{orderNo}
+    </update>
+
+    <!--生效时间-->
+    <update id="update_ProEffectDate" parameterType="java.util.Map">
+        update insurance_products_order set statusType=#{statusType},effectDate=#{effectDate} where orderNo=#{orderNo}
+    </update>
+
+</mapper>

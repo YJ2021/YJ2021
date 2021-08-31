@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.insurance.mapper.Insurance_ProMapper">
+    <!--查询保险产品(分页)-->
+    <select id="searchPro"  resultType="Insurance_Products">
+        select * from insurance_products limit ${(currentPage-1)*pageSize},${pageSize}
+    </select>
+
+    <!--查询保险产品总记录数-->
+    <select id="searchProMaxRows" resultType="Integer">
+        select count(1) from insurance_products
+    </select>
+
+     <!--查询保险产品详情-->
+    <select id="searchProDetails" parameterType="String" resultType="Insurance_Products">
+        select *from insurance_products where id=#{id}
+    </select>
+
+    <!--查询用户信息-->
+    <select id="searchUser" parameterType="String" resultType="Insurance_User">
+        select *from insurance_user where userCode=#{userCode}
+    </select>
+
+    <!--保存保险申请订单信息-->
+    <insert id="saveOrder" parameterType="Insurance_Pro_Order" >
+        insert into insurance_products_order (orderNo,proId,proName,proType,details,buyCondition,payAmount,endDate,userCode,userName,mail,idNumber,proBName,proBidNumber,proRName,proRidNumber,applyDate,statusType)
+        values(#{orderNo},#{proId},#{proName},#{proType},#{details},#{buyCondition},#{payAmount},#{endDate},#{userCode},#{userName},#{mail},#{idNumber},#{proBName},#{proBidNumber},#{proRName},#{proRidNumber},#{applyDate},#{statusType})
+    </insert>
+</mapper>

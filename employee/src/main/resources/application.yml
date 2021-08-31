@@ -1,0 +1,29 @@
+server:
+  port: 8088
+#修改项目访问根路径，默认是""
+#  servlet:
+#    context-path:
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url:  jdbc:mysql://localhost:3306/emp?characterEncoding=utf-8
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  #关闭模板引擎缓存
+  thymeleaf:
+    cache: false
+  #国际化配置
+  messages:
+    basename: i18n.employee
+
+# resources:
+#   static-locations: classpath:/yijiong/
+#  mvc:
+#    static-path-pattern: /***/ #指定静态资源路径
+#运行项目后是否在浏览器中打开浏览器
+#openProject:
+#  isOpen: true  #是否打开浏览器运行
+#  cmd: open -a   #运行命令
+#  web:    openUrl: http://localhost:8088/ #项目要运行url
+#    googleExcute: GoogleChrome  #运行的浏览器e

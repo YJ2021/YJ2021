@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.insurance.mapper.Insurance_Pro_ApplyMapper">
+
+    <!--添加申请信息到审核表-->
+    <insert id="saveProApply" parameterType="Insurance_Pro_Apply">
+        insert into insurance_pro_apply (orderNo,proStatus) values(#{orderNo},#{proStatus})
+    </insert>
+
+    <!--查询个人订单-->
+    <select id="searchOrderList"  resultType="Insurance_Pro_Order">
+        select *from insurance.insurance_products_order where userCode=#{userCode} limit ${(currentPage-1)*pageSize},${pageSize}
+    </select>
+
+    <!--个人订单总页数查询-->
+    <select id="searchMaxRows" parameterType="String" resultType="Integer">
+        select count(1) from insurance.insurance_products_order where userCode=#{userCode}
+    </select>
+
+    <!--查询审核表-->
+    <select id="searchProApply" parameterType="Integer" resultType="Insurance_Pro_Order">
+        select *from insurance_products_order  where statusType in
+        <foreach collection="statusType" item="statusType"  open="(" close=")" separator=",">
+            #{statusType}
+        </foreach>
+         limit ${(currentPage-1)*pageSize},${pageSize}
+    </select>
+    <!--审核总页数查询-->
+    <select id="searchApplyMaxRows" resultType="Integer">
+        select count(1) from insurance_products_order where statusType in
+        <foreach collection="array" item="statusType"  open="(" close=")" separator=",">
+            #{statusType}
+        </foreach>
+    </select>
+
+    <!--修改订单表审核状态-->
+    <update id="updateApplyStatus" parameterType="Insurance_Pro_Order">
+        update insurance.insurance_products_order set statusType=#{statusType},approverDate=#{approverDate} where orderNo=#{orderNo}
+    </update>
+
+    <!--修改审核表审核状态-->
+    <update id="update_ProApplyStatus" parameterType="Insurance_Pro_Apply">
+        update insurance.insurance_pro_apply set proStatus=#{proStatus} where orderNo=#{orderNo}
+    </update>
+</mapper>

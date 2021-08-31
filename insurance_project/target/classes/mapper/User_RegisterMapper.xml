@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.insurance.mapper.user.User_RegisterMapper">
+<insert id="insertUser" parameterType="Insurance_User_Add" >
+    insert into insurance.insurance_user
+    (userCode,userPassword,userType,userName,mail,idnumber,creationDate,activated)
+    values (#{userCode},#{userPassword},#{userType},#{userName},#{mail},#{idNumber},#{creationDate},#{activated})
+</insert>
+<select id="searchUser" parameterType="String" resultType="Insurance_User">
+    select *from insurance.insurance_user where userCode=#{userCode}
+</select>
+    <update id="updateActivated" parameterType="String">
+        update insurance.insurance_user set activated=1 where userCode=#{userCode}
+    </update>
+    <select id="login" parameterType="Insurance_User" resultType="Insurance_User">
+        select *from insurance.insurance_user where userCode=#{userCode} and userPassword=#{userPassword}
+    </select>
+    <update id="initializePassword" parameterType="Forget" >
+        update insurance.insurance_user set userPassword=#{initializePassword} where userCode=#{userCode}
+    </update>
+    <update id="updateUser" parameterType="Insurance_User" >
+        update insurance_user set
+        userPassword=#{userPassword},userName=#{userName},mail=#{mail},idNumber=#{idNumber},
+        modifyDate=#{modifyDate},modifiedBy=#{modifiedBy}
+        where userCode=#{userCode}
+    </update>
+</mapper>

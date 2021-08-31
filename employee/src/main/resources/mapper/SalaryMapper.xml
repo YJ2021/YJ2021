@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="cn.mapper.ISalaryMapper">
+ <!-- 个人薪资录入 -->
+ <insert id="saveSal" parameterType="Salary">
+ insert into salary(eid,salary) values(#{eid},#{salary})
+ </insert>
+ <!--个人薪资删除  -->
+ <delete id="deleteSal" parameterType="java.lang.Integer">
+ delete from salary where eid=#{eid}
+ </delete>
+ <!-- 个人薪资调整 -->
+ <update id="updateSal" parameterType="Salary">
+ update salary set salary=#{salary} where eid=#{eid}
+ </update>
+ <!-- 个人薪资查询 -->
+ <select id="searchSalById" parameterType="java.lang.Integer" resultType="Salary">
+ select *from salary where eid=#{eid}
+ </select>
+ </mapper>
